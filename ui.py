@@ -3,16 +3,19 @@ import pygame
 #basic animated text buttons
 class Button():
     def __init__(self, x, y, width, height, color, text, animation):
+        #the center coordinates
         self.x = x
         self.y = y
         self.width = width
         self.height = height
         self.color = color
+        #when the button gets hovered, it gets brighter
         self.bright = (self.color[0] + (255 - self.color[0]) / 8,self.color[1] + (255 - self.color[1]) / 8,self.color[2] + (255 - self.color[2]) / 8 )
+        #original color value backup
         self.dark = self.color
         self.text = text
         self.animation = animation
-        self.font = pygame.font.SysFont("comicsans", 30)
+        self.font = pygame.font.SysFont("arial", 30)
         self.text_surface = self.font.render(self.text, True, (0, 0, 0))
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.center = (self.x + (self.width / 2), self.y + (self.height / 2))
@@ -25,13 +28,16 @@ class Button():
     def animate(self):
         if self.animation == "plop":
             print(self.color)
+            #for 10 frames, the button gets bigger
             if 0 < self.ticksInAnimation < 10:
                 self.width = self.originalWidth + self.originalWidth * self.ticksInAnimation /50
                 self.height = self.originalHeight + self.originalHeight * self.ticksInAnimation / 50
             elif 9 < self.ticksInAnimation:
+                # after that, it stays 20% bigger than normal until
                 self.width = self.originalWidth * 1.2
                 self.height = self.originalHeight * 1.2
             else:
+                #it is not hovered anymore
                 self.width = self.originalWidth
                 self.height = self.originalHeight
     def draw(self, window):
