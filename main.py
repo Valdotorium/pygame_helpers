@@ -18,7 +18,7 @@ def init():
 
 window, clock = init()
 mouse = mouse.mouse()
-button = ui.Button(200,200,100,50,(100,70,70), "Hi", "press")
+button = ui.Button(200,200,100,50,(100,70,70), "Hi", "plop")
 while True:
     window.fill((255, 255, 255))
     clock.tick(60)
