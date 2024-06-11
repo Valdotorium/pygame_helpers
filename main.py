@@ -18,11 +18,13 @@ def init():
 
 window, clock = init()
 mouse = mouse.mouse()
+button = ui.Button(200,200,100,50,(100,70,70), "Hi", "press")
 while True:
     window.fill((255, 255, 255))
-    pygame.display.update()
     clock.tick(60)
     mouse.update()
+    button.draw(window)
+    pygame.display.update()
     print("state:", mouse.state, "click:",mouse.click, "pos:",mouse.pos, "origin:", mouse.originOfTouch)
     #quitting
     for event in pygame.event.get():
