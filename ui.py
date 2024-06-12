@@ -40,6 +40,19 @@ class Button():
                 #it is not hovered anymore
                 self.width = self.originalWidth
                 self.height = self.originalHeight
+        if self.animation == "expand":
+            
+            if 1 < self.ticksInAnimation:
+                # The button stays 20% bigger than normal until
+                self.width = self.originalWidth * 1.2
+                self.height = self.originalHeight * 1.2
+            else:
+                #it is not hovered anymore
+                self.width = self.originalWidth
+                self.height = self.originalHeight
+        if self.animation == "none":
+            pass
+    
     def draw(self, window):
         self.text_rect.center = (self.x, self.y)
         self.animate()
