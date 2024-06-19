@@ -2,10 +2,11 @@ import pygame
 
 
 class textbox():
-    def __init__(self, x, y, color, text, font, ticks, icon):
+    def __init__(self, x, y, color, bgcolor, text, font, ticks, icon):
         self.x = x
         self.y = y
         self.color = color
+        self.bgcolor = bgcolor
         self.text = text
         self.font = pygame.font.SysFont(font, 20)
         self.textRect = self.font.render(text, True, color).get_rect()
@@ -18,13 +19,13 @@ class textbox():
 
 
     def draw(self, screen):
-        screen.blit(self.font.render(self.text, True, self.color, (110, 105, 90)), self.textRect)
+        screen.blit(self.font.render(self.text, True, self.color, self.bgcolor), self.textRect)
         self.ticks -= 1
         if self.ticks == 0:
             del(self)
 #function for text displaying
-def DisplayText(screen, text, font, color, x, y):
-    _textbox = textbox(x, y, color, text, font, 180, None)
+def DisplayText(screen, text, font, x, y):
+    _textbox = textbox(x, y, (200,200,200),(95,85,80), text, font, 180, None)
     return _textbox
     
 

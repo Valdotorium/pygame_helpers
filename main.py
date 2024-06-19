@@ -19,7 +19,7 @@ def init():
 window, clock = init()
 mouse = mouse.mouse()
 button = ui.Button(200,200,100,50,(100,70,70), "Hi", "expand")
-textbox = text.DisplayText(window, "Hio", "Arial", (200, 200, 200), 400, 400)
+textbox = text.DisplayText(window, "Hio", "Arial", 400, 400)
 while True:
     window.fill((255, 255, 255))
     clock.tick(60)
