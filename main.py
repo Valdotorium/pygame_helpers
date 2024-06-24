@@ -19,7 +19,7 @@ def init():
 window, clock = init()
 mouse = mouse.mouse()
 button = ui.Button(200,200,100,50,(100,70,70), "Hi", "expand")
-textbox = text.warning("Hio", "Arial",32, pygame.image.load("icons/wheelNew.png"))
+textbox = text.DisplayText("gg", "Arial", 24, 200, 200)
 while True:
     window.fill((255, 255, 255))
     clock.tick(60)
