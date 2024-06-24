@@ -13,13 +13,30 @@ class textbox():
         self.textRect.center = (self.x, self.y)
         self.ticks = ticks
         self.icon = icon
+        #for fade-in animation
+        self.alpha = 0
         if self.icon != None:
             #icon images must be square
             self.icon = pygame.transform.scale(self.icon,(self.textRect.height , self.textRect.height ))
 
     def draw(self, screen):
-        screen.blit(self.font.render(self.text, True, self.color, self.bgcolor), self.textRect)
+        surface = (self.font.render(self.text, True, self.color, self.bgcolor), self.textRect)
+        #apply alpha
+        surface[0].set_alpha(self.alpha)
+        screen.blit(surface[0], surface[1])
+        if self.ticks > 13:
+            self.alpha += 15
+            if self.alpha > 255:
+                self.alpha = 255
+        else:
+            self.alpha -= 20
+            if self.alpha < 0:
+                self.alpha = 0
+
         if self.icon!= None:
+            # apply alpha to icon
+            self.icon.set_alpha(self.alpha)
+            #blit icon to the screen
             screen.blit(self.icon, (self.x - self.textRect.width / 2, self.y - self.textRect.height / 2))
         self.ticks -= 1
         
