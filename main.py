@@ -18,19 +18,20 @@ def init():
 
 window, clock = init()
 mouse = mouse.mouse()
-button = ui.Button(200,200,100,50,(100,70,70), "Hi", "expand")
-textbox = text.DisplayText("gg", "Arial", 24, 200, 200)
+menu = text.confirmMenu("Confirm this action , really?", "Arial", 30, (40,40,40), (200,200))
 while True:
     window.fill((255, 255, 255))
     clock.tick(60)
     mouse.update()
-    button.draw(window)
 
+    menu.update(window)
+    if menu.status == "confirm":
+        print("confirmed")
+        del(menu)
+    if menu.status == "cancel":
+        print("canceled")
+        del(menu)
 
-    if textbox.ticks <= 0:
-       pass
-    else:
-        textbox.draw(window)
 
     pygame.display.update()
     print("state:", mouse.state, "click:",mouse.click, "pos:",mouse.pos, "origin:", mouse.originOfTouch)
